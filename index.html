@@ -19,61 +19,65 @@ box-sizing:border-box;
 body{
 
 margin:0;
-font-family:'Pretendard',Arial,sans-serif;
+
+font-family:Pretendard,Arial,sans-serif;
 
 background:
 linear-gradient(
-rgba(255,255,255,.55),
-rgba(220,245,255,.8)
+rgba(255,255,255,.45),
+rgba(230,250,255,.8)
 ),
-url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
-center/cover fixed;
+url("https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e")
 
-min-height:100vh;
+center/cover fixed;
 
 }
 
 
 .container{
 
-max-width:650px;
+max-width:700px;
+
 margin:auto;
+
 padding:30px 20px;
 
 }
 
 
+
 .logo{
 
 text-align:center;
+
 font-size:35px;
-font-weight:800;
+
+font-weight:900;
+
 color:#007c91;
 
 }
 
 
-.subtitle{
+.sub{
 
 text-align:center;
+
 margin-bottom:30px;
-color:#555;
 
 }
 
 
+
 .card{
 
-background:rgba(255,255,255,.9);
+background:white;
 
 border-radius:25px;
 
 padding:35px;
 
-box-shadow:
-0 15px 40px rgba(0,0,0,.15);
-
-backdrop-filter:blur(10px);
+box-shadow:0 15px 40px rgba(0,0,0,.15);
 
 }
 
@@ -81,8 +85,11 @@ backdrop-filter:blur(10px);
 .progress{
 
 height:10px;
+
 background:#ddd;
+
 border-radius:20px;
+
 overflow:hidden;
 
 }
@@ -91,18 +98,18 @@ overflow:hidden;
 .bar{
 
 height:100%;
+
 background:#00a884;
 
-transition:.3s;
+width:0%;
 
 }
 
 
-.question{
 
-font-size:25px;
-font-weight:700;
-margin:30px 0;
+h2{
+
+margin-top:30px;
 
 }
 
@@ -110,10 +117,9 @@ margin:30px 0;
 
 .option{
 
-
 width:100%;
 
-padding:18px;
+padding:16px;
 
 margin:10px 0;
 
@@ -127,17 +133,8 @@ font-size:17px;
 
 cursor:pointer;
 
-transition:.2s;
-
 }
 
-
-
-.option:hover{
-
-transform:translateY(-3px);
-
-}
 
 
 .option.active{
@@ -152,16 +149,13 @@ border-color:#00a884;
 
 
 
-.next{
-
-
-margin-top:20px;
+button.next{
 
 width:100%;
 
 padding:18px;
 
-border:none;
+border:0;
 
 border-radius:15px;
 
@@ -171,7 +165,7 @@ color:white;
 
 font-size:18px;
 
-cursor:pointer;
+margin-top:20px;
 
 }
 
@@ -187,26 +181,30 @@ display:none;
 
 .result-card{
 
-background:white;
+background:#f6fbff;
 
 padding:20px;
 
-margin:15px 0;
-
 border-radius:20px;
 
-line-height:1.7;
+margin:15px 0;
+
+line-height:1.8;
 
 }
+
 
 
 footer{
 
 text-align:center;
-margin-top:30px;
+
+margin:30px;
+
 color:#555;
 
 }
+
 
 
 </style>
@@ -222,36 +220,48 @@ color:#555;
 
 
 <div class="logo">
+
 🌴 Jeju Planner
+
 </div>
 
 
-<p class="subtitle">
-AI 기반 초정밀 제주 여행 추천 서비스
+<p class="sub">
+
+AI 기반 초정밀 제주 여행 추천
+
 </p>
 
 
 
-<div class="card">
+<div class="card" id="quiz">
 
 
 <div class="progress">
+
 <div class="bar" id="bar"></div>
+
 </div>
 
 
-<h2 class="question" id="question"></h2>
+
+<h2 id="question"></h2>
 
 
 <div id="options"></div>
 
 
 <button class="next hidden" id="next">
+
 다음 질문 →
+
 </button>
 
 
+
 </div>
+
+
 
 
 
@@ -262,64 +272,13 @@ AI 기반 초정밀 제주 여행 추천 서비스
 
 
 <h1>
-🏝️ 제주 맞춤 코스 완성!
+
+🏝️ 제주 맞춤 코스 완성
+
 </h1>
 
 
-<div class="result-card">
-
-🌅 일정별 상세 동선<br><br>
-
-오전 : 감성 카페 + 자연 명소<br>
-
-점심 : 제주 현지 맛집<br>
-
-오후 : 핫플 & 인생샷 코스<br>
-
-저녁 : 분위기 좋은 식사
-
-</div>
-
-
-
-<div class="result-card">
-
-🔥 맛집 꿀팁<br><br>
-
-✔ 캐치테이블 확인<br>
-
-✔ 웨이팅 예상 시 원격줄서기 활용<br>
-
-✔ 관광객 몰리는 시간 피하기
-
-</div>
-
-
-
-<div class="result-card">
-
-🚗 이동 가이드<br><br>
-
-렌트카 : 동선 최적화 추천<br>
-
-뚜벅이 : 숙소 위치 중심 추천
-
-</div>
-
-
-
-<div class="result-card">
-
-🚨 지금 해야 할 것<br><br>
-
-☑ 숙소 예약<br>
-
-☑ 렌트카 완전자차<br>
-
-☑ 인기 맛집 저장
-
-</div>
-
+<div id="recommend"></div>
 
 
 </div>
@@ -330,11 +289,14 @@ AI 기반 초정밀 제주 여행 추천 서비스
 
 
 <footer>
+
 Made with ❤️ for Jeju Trip
+
 </footer>
 
 
 </div>
+
 
 
 
@@ -345,40 +307,66 @@ Made with ❤️ for Jeju Trip
 const questions=[
 
 
-["Q1. 여행 기간을 골라주세요",
-["1박2일","2박3일","3박4일","4박5일 이상"]],
+[
+"Q1. 여행 기간을 골라주세요",
+["1박2일","2박3일","3박4일","4박5일 이상"]
+],
 
 
-["Q2. 누구와 함께 떠나나요?",
-["혼자","커플","친구","부모님","아이동반 가족"]],
+[
+"Q2. 누구와 함께 떠나나요?",
+["혼자","커플","친구","부모님","아이동반 가족"]
+],
 
 
-["Q3. 여행 목적을 골라주세요 (복수 선택 가능)",
-["맛집·카페","대자연·힐링","액티비티","인생샷·핫플"],true],
+[
+"Q3. 여행 목적 (복수 선택 가능)",
+["맛집·카페","대자연·힐링","액티비티","인생샷·핫플"],
+true
+],
 
 
-["Q4. 숙소 분위기는? (복수 선택 가능)",
-["게스트하우스","감성 독채","비즈니스 호텔","5성급 호캉스"],true],
+[
+"Q4. 숙소 분위기 (복수 선택 가능)",
+["게스트하우스","감성 독채","비즈니스 호텔","5성급 호캉스"],
+true
+],
 
 
-["Q5. 하루 예상 경비",
-["10만원 미만","15~20만원","30만원 이상"]],
+[
+"Q5. 하루 예상 경비",
+["10만원 미만","15~20만원","30만원 이상"]
+],
 
 
-["Q6. 이동수단",
-["렌트카","버스&택시","스쿠터"]],
+[
+"Q6. 이동수단",
+["렌트카","버스&택시","스쿠터"]
+],
 
 
-["Q7. 선호 지역",
-["상관없음","동쪽","서쪽","남쪽","북쪽"]],
+[
+"Q7. 선호 지역",
+["상관없음","동쪽","서쪽","남쪽","북쪽"]
+],
 
 
-["Q8. 여행 페이스",
-["빡빡한 코스","여유로운 힐링"]],
+[
+"Q8. 여행 페이스",
+["빡빡한 풀코스","여유로운 힐링코스"]
+],
 
 
-["Q9. 비행 시간",
-["오전 입국-오후 출국","오후 입국-오전 출국","기타"]]
+[
+"Q9. 비행시간",
+[
+"오전 입국-오후 출국",
+"오후 입국-오전 출국",
+"기타"
+]
+
+]
+
 
 ];
 
@@ -390,31 +378,274 @@ let answers=[];
 
 
 
-function render(){
+const q=document.getElementById("question");
+
+const box=document.getElementById("options");
+
+const next=document.getElementById("next");
 
 
-let q=questions[index];
+
+function recommend(){
 
 
-document.getElementById("question").innerHTML=q[0];
+let data=answers.flat().join(" ");
 
 
-document.getElementById("bar").style.width=
-((index+1)/9*100)+"%";
+
+let region;
+
+let places;
+
+let why;
 
 
-let box=document.getElementById("options");
+
+if(
+
+data.includes("커플") ||
+
+data.includes("인생샷") ||
+
+data.includes("감성 독채") ||
+
+data.includes("카페")
+
+){
+
+
+region="서쪽 🌊 (애월 · 협재 · 한림)";
+
+
+places=[
+
+"애월 해안도로",
+
+"한담해변",
+
+"협재해수욕장",
+
+"금능해변",
+
+"감성 카페"
+
+];
+
+
+why=
+"감성적인 바다 풍경과 카페, 사진 명소 중심 여행에 추천";
+
+
+}
+
+
+
+else if(
+
+data.includes("부모님") ||
+
+data.includes("힐링") ||
+
+data.includes("대자연")
+
+){
+
+
+region="남쪽 🌿 (서귀포 · 중문)";
+
+
+places=[
+
+"주상절리",
+
+"천지연폭포",
+
+"중문 해변",
+
+"올레시장",
+
+"산방산"
+
+];
+
+
+why=
+"자연 경관과 여유로운 이동 중심 여행에 추천";
+
+
+}
+
+
+
+else if(
+
+data.includes("친구") ||
+
+data.includes("액티비티")
+
+){
+
+
+region="동쪽 🌅 (성산 · 월정리 · 구좌)";
+
+
+places=[
+
+"성산일출봉",
+
+"섭지코지",
+
+"월정리 해변",
+
+"체험 액티비티"
+
+];
+
+
+why=
+"활동적인 여행과 제주 대표 명소 탐방에 추천";
+
+
+}
+
+
+
+else{
+
+
+region="제주시 + 서쪽";
+
+
+places=[
+
+"동문시장",
+
+"용두암",
+
+"애월",
+
+"협재"
+
+];
+
+
+why=
+"첫 제주 여행자가 이동하기 편한 균형 코스";
+
+}
+
+
+
+return `
+
+
+<div class="result-card">
+
+<h2>
+
+📍 추천 지역
+
+</h2>
+
+${region}
+
+<br><br>
+
+${why}
+
+</div>
+
+
+<div class="result-card">
+
+<h2>
+
+🗺️ 추천 동선
+
+</h2>
+
+
+${places.join("<br>")}
+
+</div>
+
+
+
+<div class="result-card">
+
+<h2>
+
+🕒 일정 예시
+
+</h2>
+
+
+🌅 오전<br>
+
+자연 명소 방문<br><br>
+
+
+🍴 점심<br>
+
+현지 맛집<br><br>
+
+
+🌊 오후<br>
+
+해변 + 카페<br><br>
+
+
+🌙 저녁<br>
+
+로컬 맛집 & 야경
+
+</div>
+
+
+
+<div class="result-card">
+
+<h2>
+
+🚨 여행 전 체크
+
+</h2>
+
+
+☑ 숙소 예약<br>
+
+☑ 렌트카 완전자차<br>
+
+☑ 인기 맛집 저장
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+function load(){
+
+
+q.innerHTML=questions[index][0];
+
 
 box.innerHTML="";
 
 
-q[1].forEach(text=>{
+questions[index][1].forEach(text=>{
 
 
 let btn=document.createElement("button");
 
 
 btn.className="option";
+
 
 btn.innerHTML=text;
 
@@ -423,21 +654,23 @@ btn.innerHTML=text;
 btn.onclick=()=>{
 
 
-if(q[2]){
+if(questions[index][2]){
 
 
 btn.classList.toggle("active");
 
 
 answers[index]=
+
 [...document.querySelectorAll(".active")]
+
 .map(x=>x.innerHTML);
 
 
-}else{
 
+}
 
-answers[index]=text;
+else{
 
 
 document.querySelectorAll(".option")
@@ -447,32 +680,41 @@ document.querySelectorAll(".option")
 btn.classList.add("active");
 
 
-}
-
-
-if(answers[index].length){
-
-document.getElementById("next")
-.classList.remove("hidden");
-
-}
+answers[index]=text;
 
 
 }
 
+
+
+if(answers[index] && answers[index].length){
+
+next.classList.remove("hidden");
+
+}
+
+
+
+}
 
 
 box.appendChild(btn);
 
 
-})
+});
+
+
+
+document.getElementById("bar").style.width=
+
+((index+1)/9*100)+"%";
 
 
 }
 
 
 
-document.getElementById("next").onclick=()=>{
+next.onclick=()=>{
 
 
 index++;
@@ -481,17 +723,17 @@ index++;
 if(index<questions.length){
 
 
-document.getElementById("next")
-.classList.add("hidden");
+next.classList.add("hidden");
+
+load();
 
 
-render();
+}
+
+else{
 
 
-}else{
-
-
-document.querySelector(".card")
+document.getElementById("quiz")
 .classList.add("hidden");
 
 
@@ -499,15 +741,19 @@ document.getElementById("result")
 .classList.remove("hidden");
 
 
+document.getElementById("recommend")
+.innerHTML=recommend();
+
+
+}
+
+
 }
 
 
 
-}
+load();
 
-
-
-render();
 
 
 </script>
